@@ -151,3 +151,6 @@ The following screenshots demonstrate successful execution of the Jenkins pipeli
 
 * Pipeline Overview
 * Console Output (Docker Build Success)
+* [Screenshots](https://github.com/sallout/ACEest-DevOps-Pipeline/tree/main/screenshots)
+* [Execution Logs](https://github.com/sallout/ACEest-DevOps-Pipeline/blob/main/success_logs.txt)
+
