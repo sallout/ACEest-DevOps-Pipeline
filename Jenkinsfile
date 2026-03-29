@@ -15,20 +15,25 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                // Use python3 to create a virtual environment to avoid macOS restrictions
+                sh '''
+                    python3 -m venv venv
+                    ./venv/bin/pip install --upgrade pip
+                    ./venv/bin/pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Lint Code') {
             steps {
-                sh 'flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics'
+                sh './venv/bin/flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics'
             }
         }
 
         stage('Test') {
             steps {
-                // Run pytest to validate internal logic
-                sh 'pytest test_app.py -v'
+                // Run pytest to validate internal logic using the virtual environment
+                sh './venv/bin/pytest test_app.py -v'
             }
         }
 
