@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "aceest-fitness-app:latest"
+        // Add Homebrew and Docker paths so Jenkins can find the 'docker' command on Macs
+        PATH = "/usr/local/bin:/opt/homebrew/bin:${env.PATH}"
     }
 
     stages {
